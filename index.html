@@ -7,28 +7,28 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1920&auto=format&fit=crop');
+            background-image: url('./beautifulImage.png');
             background-size: cover;
-            background-position: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-repeat: no-repeat;
+            font-family: Noto Sans, system-ui, sans-serif;
             overflow: hidden;
         }
 
         /* Top Bar Styling */
-        .top-bar {
+        #top {
             position: absolute;
             top: 0;
             width: 100%;
             display: flex;
             backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(0, 0, 0, 0.125);
             color: #fff;
             justify-content: space-between;
             box-sizing: border-box;
             z-index: 1000;
         }
 
-        .top-bar p {
+        #top p {
             margin-left: 16px;
             margin-right: 16px;
             background-color: rgba(256, 256, 256, 0.125);
@@ -37,7 +37,7 @@
             font-size: 14px;
         }
 
-        /* Desktop Apps Grid */
+        /* Desktop Apps Container & Icons */
         #desktopApps {
             padding-top: 64px;
             padding-left: 16px;
@@ -46,7 +46,7 @@
         .app-icon {
             text-align: center;
             padding: 16px;
-            filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 0 8px black);
             width: fit-content;
             cursor: pointer;
             user-select: none;
@@ -65,7 +65,7 @@
             margin-top: 4px;
         }
 
-        /* General Window Box Styling */
+        /* Window Structure */
         .window {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
@@ -74,8 +74,7 @@
             overflow: hidden;
         }
 
-        /* Window Header Bar for Dragging */
-        .window-header {
+        .windowheader {
             background-color: #333;
             color: white;
             padding: 8px 12px;
@@ -88,25 +87,26 @@
             font-size: 14px;
         }
 
-        .close-btn {
+        .closebutton {
             cursor: pointer;
-            color: #ff6b6b;
-            padding: 0 4px;
+            width: 16px;
+            height: 16px;
+            background-color: #ff5f56;
+            border-radius: 50%;
         }
 
-        /* Welcome Window Specifics */
+        .headertext {
+            margin: 0;
+        }
+
+        /* Welcome Window */
         #welcome {
             width: 400px;
-            top: calc(50% - 150px);
-            left: calc(50% - 200px);
+            top: calc(50% - 90px);
+            left: calc(50% - 180px);
         }
 
-        .welcome-content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* Notes Window Specifics */
+        /* Notes App Window */
         #notes {
             width: 520px;
             display: none;
@@ -117,13 +117,13 @@
 </head>
 <body>
 
-    <!-- Top Bar with OS Name and Live Clock -->
-    <div class="top-bar">
+    <!-- Top Bar -->
+    <div id="top">
         <p id="welcomeopen" style="font-weight: 700; cursor: pointer;">RidithOS</p>
         <p id="timeElement">Time</p>
     </div>
 
-    <!-- Desktop Icons -->
+    <!-- Desktop Apps / Icons -->
     <div id="desktopApps">
         <div class="app-icon" id="notesIcon">
             <img src="./notebook.png" alt="Notes Icon">
@@ -131,28 +131,29 @@
         </div>
     </div>
 
-    <!-- Main Welcome Window Container -->
+    <!-- Welcome Window -->
     <div class="window" id="welcome">
-        <div class="window-header" id="welcomeheader">
-            <span>Welcome Window</span>
-            <span class="close-btn" id="welcomeclose">[X]</span>
+        <div class="windowheader" id="welcomeheader">
+            <div class="closebutton" id="welcomeclose"></div>
+            <p class="headertext">Welcome Window</p>
+            <div style="width: 16px;"></div>
         </div>
-        <div class="welcome-content">
+        <div style="padding: 20px; text-align: center;">
             <h1 style="margin-top: 0; font-size: 24px;">Welcome To Ridith OS!!</h1>
-            <p style="color: #444; font-size: 14px; line-height: 1.5;">This is an operating system completely handmade, built, and designed by Ridith Shetty.</p>
+            <p style="color: #444; font-size: 14px; line-height: 1.5;">This is an operating system completely handmade and designed by you!</p>
         </div>
     </div>
 
-    <!-- Notes App Window Container -->
+    <!-- Notes App Window -->
     <div class="window" id="notes">
-        <div class="window-header" id="notesheader">
-            <span>Hacker Notes</span>
-            <span class="close-btn" id="notesclose">[X]</span>
+        <div class="windowheader" id="notesheader">
+            <div class="closebutton" id="notesclose"></div>
+            <p class="headertext">Notes</p>
+            <div style="width: 16px;"></div>
         </div>
         <div style="background-color: #fff; margin: 6px; border-radius: 12px; height: 440px; padding: 16px; font-family: Courier, monospace; display: flex;">
-            <!-- Sidebar for dynamic content selection -->
+            <!-- Sidebar for dynamic note listing -->
             <div id="sidebar" style="background-color: #F9F9F9; width: 150px; margin-right: 16px; padding: 12px; border-radius: 12px; overflow-y: auto;">
-                <!-- Filled via JS -->
             </div>
             <!-- Main Content Area -->
             <div id="notecontent" style="flex: 1; overflow-y: auto; padding: 8px;">
@@ -161,7 +162,7 @@
         </div>
     </div>
 
-    <!-- External Script File -->
+    <!-- Script File -->
     <script src="script.js"></script>
 
 </body>
