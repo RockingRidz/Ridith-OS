@@ -18,7 +18,7 @@ function dragElement(element) {
   if (header) {
     header.onmousedown = startDragging;
   } else {
-    element.onmousedown = startDragging;
+    element.onmousedown = startdragging;
   }
 
   function startDragging(e) {
