@@ -7,8 +7,6 @@
             margin: 0;
             height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
             background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -39,16 +37,40 @@
             font-size: 14px;
         }
 
-        /* The OS Window box */
+        /* Desktop Apps Grid */
+        #desktopApps {
+            padding-top: 64px;
+            padding-left: 16px;
+        }
+
+        .app-icon {
+            text-align: center;
+            padding: 16px;
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.5));
+            width: fit-content;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .app-icon img {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+        }
+
+        .app-icon p {
+            margin: 0px;
+            color: #fff;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* General Window Box Styling */
         .window {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            width: 400px;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             overflow: hidden;
         }
 
@@ -66,21 +88,30 @@
             font-size: 14px;
         }
 
-        .window-content {
+        .close-btn {
+            cursor: pointer;
+            color: #ff6b6b;
+            padding: 0 4px;
+        }
+
+        /* Welcome Window Specifics */
+        #welcome {
+            width: 400px;
+            top: calc(50% - 150px);
+            left: calc(50% - 200px);
+        }
+
+        .welcome-content {
             padding: 20px;
             text-align: center;
         }
 
-        .window-content h1 {
-            margin-top: 0;
-            color: #111;
-            font-size: 24px;
-        }
-
-        .window-content p {
-            color: #444;
-            font-size: 14px;
-            line-height: 1.5;
+        /* Notes Window Specifics */
+        #notes {
+            width: 520px;
+            display: none;
+            top: calc(50% - 240px);
+            left: calc(50% - 260px);
         }
     </style>
 </head>
@@ -92,33 +123,45 @@
         <p id="timeElement">Time</p>
     </div>
 
-    <!-- Main Draggable Window Container -->
-    <div class="window" id="welcome">
-        <!-- Drag Handle Header -->
-        <div class="window-header" id="welcomeheader">
-            <span>Welcome Window</span>
-            <span id="welcomeclose" style="cursor: pointer; color: #ff6b6b; padding: 0 4px;">[X] Close</span>
-        </div>
-        <!-- Window Contents -->
-        <div class="window-content">
-            <h1>Welcome To Ridith OS!!</h1>
-            <p>This is an operating system completely handmade, built, and designed by Ridith Shetty.</p>
-            <h2>Tell me what do you think!!</h2>
+    <!-- Desktop Icons -->
+    <div id="desktopApps">
+        <div class="app-icon" id="notesIcon">
+            <img src="./notebook.png" alt="Notes Icon">
+            <p>Hacker Notes</p>
         </div>
     </div>
 
-    <!-- Clock Script -->
-    <script>
-        function updateTime() {
-            var currentTime = new Date().toLocaleString();
-            var timeText = document.querySelector("#timeElement");
-            timeText.innerHTML = currentTime;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-    </script>
+    <!-- Main Welcome Window Container -->
+    <div class="window" id="welcome">
+        <div class="window-header" id="welcomeheader">
+            <span>Welcome Window</span>
+            <span class="close-btn" id="welcomeclose">[X]</span>
+        </div>
+        <div class="welcome-content">
+            <h1 style="margin-top: 0; font-size: 24px;">Welcome To Ridith OS!!</h1>
+            <p style="color: #444; font-size: 14px; line-height: 1.5;">This is an operating system completely handmade, built, and designed by Ridith Shetty.</p>
+        </div>
+    </div>
 
-    <!-- Connect External Script File for Dragging & Toggling -->
+    <!-- Notes App Window Container -->
+    <div class="window" id="notes">
+        <div class="window-header" id="notesheader">
+            <span>Hacker Notes</span>
+            <span class="close-btn" id="notesclose">[X]</span>
+        </div>
+        <div style="background-color: #fff; margin: 6px; border-radius: 12px; height: 440px; padding: 16px; font-family: Courier, monospace; display: flex;">
+            <!-- Sidebar for dynamic content selection -->
+            <div id="sidebar" style="background-color: #F9F9F9; width: 150px; margin-right: 16px; padding: 12px; border-radius: 12px; overflow-y: auto;">
+                <!-- Filled via JS -->
+            </div>
+            <!-- Main Content Area -->
+            <div id="notecontent" style="flex: 1; overflow-y: auto; padding: 8px;">
+                <p>Select a note from the sidebar!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Script File -->
     <script src="script.js"></script>
 
 </body>
