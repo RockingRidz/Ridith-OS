@@ -3,79 +3,26 @@
 <head>
     <title>Ridith OS</title>
     <style>
-        body {
-            /* Full screen cosmic background */
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
-        }
-
-        /* Top OS Bar */
-        .top-bar {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            display: flex;
-            backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, 0.25);
-            color: #fff;
-            justify-content: space-between;
-            box-sizing: border-box;
-            z-index: 1000;
-        }
-
-        .top-bar p {
-            margin-left: 16px;
-            margin-right: 16px;
-            background-color: rgba(256, 256, 256, 0.125);
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 14px;
-        }
-
-        /* The OS Window box */
-        .window {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            width: 400px;
-            text-align: center;
-        }
-
-        .window h1 {
-            margin-top: 0;
-            color: #111;
-            font-size: 24px;
-        }
-
-        .window p {
-            color: #444;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
+       <body>
 
     <!-- Top Bar with OS Name and Live Clock -->
     <div class="top-bar">
-        <p style="font-weight: 700;">RidithOS</p>
+        <p style="font-weight: 700;" id="welcomeopen" style="cursor: pointer;">RidithOS</p>
         <p id="timeElement">Time</p>
     </div>
 
-    <!-- Main Window Container -->
-    <div class="window">
-        <h1>Welcome To Ridith OS!!</h1>
-        <p>This is an operating system completely handmade, built, and designed by Ridith Shetty.</p>
-        <h2>Tell me what do you think!!</h2>
+    <!-- Main Window Container with Drag Handle -->
+    <div class="window" id="welcome" style="top: 50%; left: 50%; transform: translate(-50%, -50%); position: absolute;">
+        <div id="welcomeheader" style="cursor: grab; user-select: none; background: #333; color: white; padding: 5px; border-radius: 6px 6px 0 0; display: flex; justify-content: space-between; align-items: center;">
+            <span>Drag Handle</span>
+            <span id="welcomeclose" style="cursor: pointer; color: #ff6b6b; font-weight: bold; padding: 0 5px;">[X]</span>
+        </div>
+        
+        <div style="padding: 20px; text-align: center;">
+            <h1>Welcome To Ridith OS!!</h1>
+            <p>This is an operating system completely handmade, built, and designed by Ridith Shetty.</p>
+            <h2>Tell me what do you think!!</h2>
+        </div>
     </div>
 
     <!-- JavaScript to Update the Clock Every Second -->
@@ -88,6 +35,8 @@
         setInterval(updateTime, 1000);
         updateTime();
     </script>
-<script src="script.js"></script>
+
+    <!-- Connect your external script file -->
+    <script src="script.js"></script>
+
 </body>
-</html>
