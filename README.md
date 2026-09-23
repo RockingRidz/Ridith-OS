@@ -1,41 +1,32 @@
-Ridith Operating System
+# Ridith OS (Ridz OS)
 
-Welcome to Ridith Operating System, a custom web based desktop environment and personal operating system built from scratch using HTML, CSS, and JavaScript. This project replicates core desktop mechanics entirely within a web browser, complete with a live clock, window management, custom wallpaper styling, and interactive applications.
+Welcome to Ridith OS, a custom web-based desktop environment and personal operating system built from scratch using pure Web technologies. This project replicates core desktop mechanics directly inside a web browser, complete with window management, a top bar status engine, and interactive built-in applications.
 
-Features
+---
 
-Custom Desktop Environment
-The system features a personalized desktop interface complete with a top status bar, vibrant custom wallpapers, and an interactive icon layout.
+## Features
 
-Window Management Engine
-Every window on the desktop supports full dragging mechanics, dynamic layer ordering through z-index tracking, and standard window controls like closing and opening.
+### Desktop and Window Management
+- Custom Desktop Layout: Glassmorphism top status bar, background wallpaper, and desktop app shortcuts.
+- Window Management Engine: Full mouse drag-and-drop support across all app windows.
+- Dynamic Layering System: Smart z-index tracking ensures active and focused windows always come to the front without clipping behind the top bar.
+- Live System Clock: Real-time status bar clock updated continuously via JavaScript.
 
-Live Clock Status Bar
-The top bar incorporates a real time clock component that updates every second to display the current date and time cleanly.
+### Built-In Applications
+| Application | Description |
+| :--- | :--- |
+| Hacker Notes | Modular notes viewer with active sidebar navigation and editable rich-text containers. |
+| Terminal | Interactive command-line interface supporting Unix-style commands (help, date, whoami, echo, osinfo, clear). |
+| Ridz Paint | HTML5 Canvas drawing tool featuring custom color picking, adjustable brush sizing, and instant canvas resetting. |
+| Calculator | Built-in utility for performing real-time arithmetic calculations. |
 
-Hacker Notes Application
-A dedicated built-in application featuring a dynamic sidebar populated from a JavaScript array of note objects, complete with editable content and custom styling.
+---
 
-Technical Architecture
+## Technical Architecture
 
-Ridith OS is structured around two primary code files:
+Ridith OS operates on a clean, zero-dependency codebase:
 
-index.html
-Contains the core DOM structure, including the desktop layout container, the top status bar, desktop app shortcut wrappers, and the modular window templates for both the welcome prompt and the notes application.
-
-script.js
-Manages all dynamic behaviors. This includes the real time clock interval loop, the physics engine for mouse dragging windows, window layering and focus management, and the JavaScript array iteration used to dynamically populate the notes sidebar content.
-
-Getting Started Locally
-
-To run or modify this project on your local machine or through a cloud development environment, follow these steps:
-
-Clone or download the repository to your local computer.
-
-Open the project folder inside any code editor such as Visual Studio Code or GitHub Codespaces.
-
-Open the index.html file in any modern web browser or deploy the repository using GitHub Pages to run it live on the web.
-
-Future Development Plans
-
-Future updates and additions planned for the platform include additional desktop utilities, persistent local storage support for user notes, custom theme selection, and expanded interactive applications.
+```text
+├── index.html     # HTML structure for desktop, status bar, and app window layouts
+├── script.js      # OS engine (window dragging, layering, clock loop, app logic)
+└── README.md      # Official project documentation
